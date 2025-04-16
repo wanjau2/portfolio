@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tags: ['HTML', 'Firebase', 'CSS'],
             category: 'web',
             demoLink: 'https://example.com/taskapp',
-            codeLink: 'https://github.com/yourusername/taskapp'
+            codeLink: 'https://github.com/wanjau2/Task-tracker'
         },
         {
             id: 6,
