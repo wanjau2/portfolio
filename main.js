@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'img/projects/taskapp.png',
             tags: ['HTML', 'Firebase', 'CSS'],
             category: 'web',
-            demoLink: 'https://example.com/taskapp',
+            demoLink: 'https://todotracker2.netlify.app/',
             codeLink: 'https://github.com/wanjau2/Task-tracker'
         },
         {
