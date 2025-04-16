@@ -306,48 +306,85 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.prepend(hiddenNext);
     }
 
+    // Initialize projects
+    initProjects();
     // Skills Section
     const skillsContainer = document.querySelector('.skills-container');
     
     if (skillsContainer) {
-        const skills = [
-            { name: 'Python', icon: 'fab fa-python', category: 'programming' },
-            { name: 'JavaScript', icon: 'fab fa-js', category: 'programming' },
-            { name: 'HTML', icon: 'fab fa-html5', category: 'frontend' },
-            { name: 'CSS', icon: 'fab fa-css3-alt', category: 'frontend' },
-            { name: 'Flask', icon: 'fas fa-flask', category: 'backend' },
-            { name: 'MongoDB', icon: 'fas fa-database', category: 'database' },
-            { name: 'SQL', icon: 'fas fa-database', category: 'database' },
-            { name: 'Git', icon: 'fab fa-git-alt', category: 'tools' },
-            { name: 'Bash', icon: 'fas fa-terminal', category: 'tools' },
-            { name: 'Pandas', icon: 'fas fa-table', category: 'data-science' },
-            { name: 'NumPy', icon: 'fas fa-calculator', category: 'data-science' },
-            { name: 'PowerBI', icon: 'fas fa-chart-bar', category: 'data-science' },
-            { name: 'Excel', icon: 'fas fa-file-excel', category: 'data-science' },
-            { name: 'Matplotlib', icon: 'fas fa-chart-line', category: 'data-science' },
-            { name: 'TensorFlow', icon: 'fas fa-brain', category: 'machine-learning' }
+        const skillCategories = [
+            {
+                name: 'Programming Languages',
+                skills: [
+                    { name: 'Python', icon: 'fab fa-python' },
+                    { name: 'JavaScript', icon: 'fab fa-js' }
+                ]
+            },
+            {
+                name: 'Web Development',
+                skills: [
+                    { name: 'HTML', icon: 'fab fa-html5' },
+                    { name: 'CSS', icon: 'fab fa-css3-alt' },
+                    { name: 'Flask', icon: 'fas fa-flask' }
+                ]
+            },
+            {
+                name: 'Databases',
+                skills: [
+                    { name: 'MongoDB', icon: 'fas fa-database' },
+                    { name: 'SQL', icon: 'fas fa-database' }
+                ]
+            },
+            {
+                name: 'Data Science',
+                skills: [
+                    { name: 'Pandas', icon: 'fas fa-table' },
+                    { name: 'NumPy', icon: 'fas fa-calculator' },
+                    { name: 'Matplotlib', icon: 'fas fa-chart-line' },
+                    { name: 'TensorFlow', icon: 'fas fa-brain' }
+                ]
+            },
+            {
+                name: 'Tools',
+                skills: [
+                    { name: 'PowerBI', icon: 'fas fa-chart-bar' },
+                    { name: 'Excel', icon: 'fas fa-file-excel' },
+                    { name: 'Git', icon: 'fab fa-git-alt' },
+                    { name: 'Bash', icon: 'fas fa-terminal' }
+                ]
+            }
         ];
         
         // Clear existing skills
         skillsContainer.innerHTML = '';
         
-        // Add skills to the container
-        skills.forEach(skill => {
-            const skillElement = document.createElement('div');
-            skillElement.className = `skill-item ${skill.category}`;
-            skillElement.setAttribute('data-aos', 'fade-up');
+        // Create skill categories
+        skillCategories.forEach(category => {
+            const categorySection = document.createElement('div');
+            categorySection.className = 'skill-category';
+            categorySection.setAttribute('data-aos', 'fade-up');
             
-            skillElement.innerHTML = `
-                <div class="skill-icon">
-                    <i class="${skill.icon}"></i>
-                </div>
-                <h3>${skill.name}</h3>
+            categorySection.innerHTML = `
+                <h3 class="category-title">${category.name}</h3>
+                <div class="skills-grid"></div>
             `;
             
-            skillsContainer.appendChild(skillElement);
+            const skillsGrid = categorySection.querySelector('.skills-grid');
+            
+            // Add skills to category
+            category.skills.forEach(skill => {
+                const skillItem = document.createElement('div');
+                skillItem.className = 'skill-item';
+                
+                skillItem.innerHTML = `
+                    <i class="${skill.icon}"></i>
+                    <span>${skill.name}</span>
+                `;
+                
+                skillsGrid.appendChild(skillItem);
+            });
+            
+            skillsContainer.appendChild(categorySection);
         });
     }
-
-    // Initialize projects
-    initProjects();
 });
