@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eugene Wanjau - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Eugene Wanjau</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-right">
+                <h1>Hi, I'm <span class="typing-text highlight">Eugene Wanjau</span></h1>
+                <h2>Full Stack Developer</h2>
+                <p>I build responsive and user-friendly web applications with modern technologies.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn primary-btn">View My Work</a>
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <img src="img/hero/coding-illustration.png" alt="Coding Illustration" class="hero-image">        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="img/profile/profile2.jpg" alt="Your Name">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <p>Hello! I'm a passionate full-stack developer with a strong foundation in both front-end and back-end technologies. I enjoy creating efficient, scalable, and user-friendly applications that solve real-world problems.</p>
+                    <p>With a background in computer science and several years of experience in the industry, I've developed a keen eye for detail and a commitment to writing clean, maintainable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development.</p>
+                    <p>When I'm not coding, you can find me hiking, reading tech blogs, or experimenting with new recipes in the kitchen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Skills Section -->
+<section id="skills" class="skills">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">My Skills</h2>
+        
+        <div class="skills-container">
+            <div class="skills-category" data-aos="fade-up">
+                <h3>Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item skill-python">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    
+                    <div class="skill-item skill-html">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+                    
+                    <div class="skill-item skill-css">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+                    
+                    <div class="skill-item skill-javascript">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    
+                    <div class="skill-item skill-flask">
+                        <i class="fas fa-flask"></i>
+                        <span>Flask</span>
+                    </div>
+                    
+                    <div class="skill-item skill-git">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    
+                    <div class="skill-item skill-sql">
+                        <i class="fas fa-database"></i>
+                        <span>SQL</span>
+                    </div>
+                    
+                    <div class="skill-item skill-mongodb">
+                        <i class="fas fa-leaf"></i>
+                        <span>MongoDB</span>
+                    </div>
+                    
+                    <div class="skill-item skill-bash">
+                        <i class="fas fa-terminal"></i>
+                        <span>Bash</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">My Projects</h2>
+            <div class="filter-buttons" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+            <div class="projects-grid">
+                <!-- Project cards will be added dynamically with JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <p>Feel free to reach out to me for collaboration, job opportunities, or just to say hello!</p>
+                    <div class="contact-links">
+                        <a href="mailto:eugenewanjau@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>eugenewanjau@gmail.com</span>
+                        </a>
+                        <a href="tel:+254748507336" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            <span>+254 748507336</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/eugene-wanjau-879b84240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="contact-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/wanjau2" target="_blank" class="contact-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" data-aos="fade-left" action="https://formsubmit.co/eugenewanjau@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="thanks.html">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 Eugene Wanjau. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/eugene-wanjau-879b84240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/wanjau2" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <a href="#home"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="" alt="Project Image">
+            </div>
+            <div class="modal-body">
+                <h2></h2>
+                <div class="modal-tags"></div>
+                <p class="modal-description"></p>
+                <div class="project-screenshots"></div>
+                <div class="modal-links"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
