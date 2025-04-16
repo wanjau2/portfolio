@@ -290,6 +290,13 @@ document.addEventListener('DOMContentLoaded', function() {
         hiddenTemplate.name = '_template';
         hiddenTemplate.value = 'table';
         contactForm.prepend(hiddenTemplate);
+
+        // Add honeypot field to prevent spam
+        const honeypotField = document.createElement('input');
+        honeypotField.type = 'text';
+        honeypotField.name = '_honey';
+        honeypotField.style.display = 'none';
+        contactForm.prepend(honeypotField);
         
         // Set redirect to thanks.html page
         const hiddenNext = document.createElement('input');
