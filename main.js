@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'img/projects/portfolio.jpg',
             tags: ['HTML', 'CSS', 'JavaScript'],
             category: 'web',
-            demoLink: 'https://example.com/portfolio',
-            codeLink: 'https://github.com/yourusername/portfolio'
+            demoLink: 'https://wanjau.netlify.app/',
+            codeLink: 'https://github.com/wanjau2/portfolio'
         },
         {
             id: 5,
