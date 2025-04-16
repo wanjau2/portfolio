@@ -6,42 +6,81 @@
     <title>Thank You - Eugene Wanjau</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <div class="thank-you-container">
-        <div class="thank-you-content">
-            <h1>Thank You!</h1>
-            <p>Your message has been sent successfully. I'll get back to you as soon as possible.</p>
-            <a href="index.html" class="btn primary-btn">Back to Homepage</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Eugene Wanjau</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <style>
-        .thank-you-container {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-color: var(--background-color);
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="thank-you-content" data-aos="fade-up">
+                <i class="fas fa-check-circle"></i>
+                <h1>Thank You!</h1>
+                <p>Your message has been sent successfully. I'll get back to you as soon as possible.</p>
+                <a href="index.html" class="btn primary-btn">Back to Homepage</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 Eugene Wanjau. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/eugene-wanjau-879b84240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/wanjau2" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
         }
-        
-        .thank-you-content {
-            max-width: 600px;
-            padding: 2rem;
-            background-color: var(--card-background);
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-        
-        .thank-you-content h1 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .thank-you-content p {
-            margin-bottom: 2rem;
-        }
-    </style>
+
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

@@ -268,25 +268,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the form data to a server
-            // For now, we'll just log it to the console
-            console.log('Form submitted:', { name, email, subject, message });
-            
-            // Show success message (you can replace this with your own UI feedback)
-            alert('Thank you for your message! I will get back to you soon.');
-            
-            // Reset form
-            contactForm.reset();
-        });
+        // Update form attributes for FormSubmit service
+        contactForm.setAttribute('action', 'https://formsubmit.co/eugenewanjau@gmail.com');
+        contactForm.setAttribute('method', 'POST');
+        
+        // Create hidden inputs for FormSubmit configuration
+        const hiddenSubject = document.createElement('input');
+        hiddenSubject.type = 'hidden';
+        hiddenSubject.name = '_subject';
+        hiddenSubject.value = 'New Portfolio Contact Message';
+        contactForm.prepend(hiddenSubject);
+        
+        const hiddenCaptcha = document.createElement('input');
+        hiddenCaptcha.type = 'hidden';
+        hiddenCaptcha.name = '_captcha';
+        hiddenCaptcha.value = 'false';
+        contactForm.prepend(hiddenCaptcha);
+        
+        const hiddenTemplate = document.createElement('input');
+        hiddenTemplate.type = 'hidden';
+        hiddenTemplate.name = '_template';
+        hiddenTemplate.value = 'table';
+        contactForm.prepend(hiddenTemplate);
+        
+        // Set redirect to thanks.html page
+        const hiddenNext = document.createElement('input');
+        hiddenNext.type = 'hidden';
+        hiddenNext.name = '_next';
+        hiddenNext.value = 'https://wanjau.netlify.app/thanks.html';
+        contactForm.prepend(hiddenNext);
     }
 
     // Initialize projects
