@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         offset: 100
     });
 
-    // Typing animation
+    // Enhanced Typing animation
     const typingElement = document.querySelector('.typing-text');
     if (typingElement) {
         const text = typingElement.textContent;
@@ -18,7 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i < text.length) {
                 typingElement.textContent += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100);
+                // Random typing speed between 70ms and 150ms for more natural effect
+                const randomSpeed = Math.floor(Math.random() * 80) + 70;
+                setTimeout(typeWriter, randomSpeed);
+            } else {
+                // Add blinking cursor effect after typing is complete
+                typingElement.classList.add('typing-complete');
             }
         };
         
