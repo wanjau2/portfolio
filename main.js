@@ -46,16 +46,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Scroll to Top Button
-    const scrollToTopBtn = document.querySelector('.scroll-to-top a');
+    // Scroll to top button functionality
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
     
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
-            scrollToTopBtn.style.opacity = '1';
+            scrollToTopBtn.classList.add('active');
         } else {
-            scrollToTopBtn.style.opacity = '0';
+            scrollToTopBtn.classList.remove('active');
         }
     });
-
+    
+    // Animate project cards on scroll
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    projectCards.forEach(card => {
+        observer.observe(card);
+    });
+    
     // Project Filter Functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectsGrid = document.querySelector('.projects-grid');
@@ -223,27 +242,34 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalDescription = modal.querySelector('.modal-description');
         const modalLinks = modal.querySelector('.modal-links');
         
-        modalImage.src = project.image;
-        modalImage.alt = project.title;
-        modalTitle.textContent = project.title;
+        if (modalImage) modalImage.src = project.image;
+        if (modalImage) modalImage.alt = project.title;
+        if (modalTitle) modalTitle.textContent = project.title;
         
-        modalTags.innerHTML = '';
-        project.tags.forEach(tag => {
-            const span = document.createElement('span');
-            span.textContent = tag;
-            modalTags.appendChild(span);
-        });
+        if (modalTags) {
+            modalTags.innerHTML = '';
+            project.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.textContent = tag;
+                modalTags.appendChild(span);
+            });
+        }
         
-        modalDescription.textContent = project.description;
+        if (modalDescription) modalDescription.textContent = project.description;
         
-        modalLinks.innerHTML = `
-            <a href="${project.demoLink}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            <a href="${project.codeLink}" target="_blank"><i class="fab fa-github"></i> View Code</a>
-        `;
+        if (modalLinks) {
+            modalLinks.innerHTML = `
+                <a href="${project.demoLink}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                <a href="${project.codeLink}" target="_blank"><i class="fab fa-github"></i> View Code</a>
+            `;
+        }
         
         // Show modal
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        
+        // Focus on close button for accessibility
+        if (closeModal) closeModal.focus();
     }
     
     // Close modal when clicking on close button
@@ -308,83 +334,91 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize projects
     initProjects();
-    // Skills Section
-    const skillsContainer = document.querySelector('.skills-container');
     
-    if (skillsContainer) {
-        const skillCategories = [
-            {
-                name: 'Programming Languages',
-                skills: [
-                    { name: 'Python', icon: 'fab fa-python' },
-                    { name: 'JavaScript', icon: 'fab fa-js' }
-                ]
-            },
-            {
-                name: 'Web Development',
-                skills: [
-                    { name: 'HTML', icon: 'fab fa-html5' },
-                    { name: 'CSS', icon: 'fab fa-css3-alt' },
-                    { name: 'Flask', icon: 'fas fa-flask' }
-                ]
-            },
-            {
-                name: 'Databases',
-                skills: [
-                    { name: 'MongoDB', icon: 'fas fa-database' },
-                    { name: 'SQL', icon: 'fas fa-database' }
-                ]
-            },
-            {
-                name: 'Data Science',
-                skills: [
-                    { name: 'Pandas', icon: 'fas fa-table' },
-                    { name: 'NumPy', icon: 'fas fa-calculator' },
-                    { name: 'Matplotlib', icon: 'fas fa-chart-line' },
-                    { name: 'TensorFlow', icon: 'fas fa-brain' }
-                ]
-            },
-            {
-                name: 'Tools',
-                skills: [
-                    { name: 'PowerBI', icon: 'fas fa-chart-bar' },
-                    { name: 'Excel', icon: 'fas fa-file-excel' },
-                    { name: 'Git', icon: 'fab fa-git-alt' },
-                    { name: 'Bash', icon: 'fas fa-terminal' }
-                ]
-            }
-        ];
+    // Skills Section
+    function initSkills() {
+        const skillsContainer = document.getElementById('skills-container');
         
-        // Clear existing skills
-        skillsContainer.innerHTML = '';
-        
-        // Create skill categories
-        skillCategories.forEach(category => {
-            const categorySection = document.createElement('div');
-            categorySection.className = 'skill-category';
-            categorySection.setAttribute('data-aos', 'fade-up');
+        if (skillsContainer) {
+            // Clear existing content
+            skillsContainer.innerHTML = '';
             
-            categorySection.innerHTML = `
-                <h3 class="category-title">${category.name}</h3>
-                <div class="skills-grid"></div>
-            `;
+            const skillCategories = [
+                {
+                    name: 'Programming Languages',
+                    skills: [
+                        { name: 'Python', icon: 'fab fa-python', class: 'skill-python' },
+                        { name: 'JavaScript', icon: 'fab fa-js', class: 'skill-javascript' }
+                    ]
+                },
+                {
+                    name: 'Web Development',
+                    skills: [
+                        { name: 'HTML', icon: 'fab fa-html5', class: 'skill-html' },
+                        { name: 'CSS', icon: 'fab fa-css3-alt', class: 'skill-css' },
+                        { name: 'Flask', icon: 'fas fa-flask', class: 'skill-flask' }
+                    ]
+                },
+                {
+                    name: 'Databases',
+                    skills: [
+                        { name: 'MongoDB', icon: 'fas fa-database', class: 'skill-mongodb' },
+                        { name: 'SQL', icon: 'fas fa-database', class: 'skill-sql' }
+                    ]
+                },
+                {
+                    name: 'Data Science',
+                    skills: [
+                        { name: 'Pandas', icon: 'fas fa-table', class: 'skill-pandas' },
+                        { name: 'NumPy', icon: 'fas fa-calculator', class: 'skill-numpy' },
+                        { name: 'Matplotlib', icon: 'fas fa-chart-line', class: 'skill-matplotlib' },
+                        { name: 'TensorFlow', icon: 'fas fa-brain', class: 'skill-tensorflow' }
+                    ]
+                },
+                {
+                    name: 'Tools',
+                    skills: [
+                        { name: 'PowerBI', icon: 'fas fa-chart-bar', class: 'skill-powerbi' },
+                        { name: 'Excel', icon: 'fas fa-file-excel', class: 'skill-excel' },
+                        { name: 'Git', icon: 'fab fa-git-alt', class: 'skill-git' },
+                        { name: 'Bash', icon: 'fas fa-terminal', class: 'skill-bash' }
+                    ]
+                }
+            ];
             
-            const skillsGrid = categorySection.querySelector('.skills-grid');
-            
-            // Add skills to category
-            category.skills.forEach(skill => {
-                const skillItem = document.createElement('div');
-                skillItem.className = 'skill-item';
+            // Create skill categories and cards
+            skillCategories.forEach(category => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'skill-category';
+                categoryElement.setAttribute('data-aos', 'fade-up');
                 
-                skillItem.innerHTML = `
-                    <i class="${skill.icon}"></i>
-                    <span>${skill.name}</span>
+                categoryElement.innerHTML = `
+                    <h3>${category.name}</h3>
+                    <div class="category-skills-grid"></div>
                 `;
                 
-                skillsGrid.appendChild(skillItem);
+                const skillsGrid = categoryElement.querySelector('.category-skills-grid');
+                
+                // Add skills to the grid
+                category.skills.forEach(skill => {
+                    const skillCard = document.createElement('div');
+                    skillCard.className = `skill-card ${skill.class}`;
+                    
+                    skillCard.innerHTML = `
+                        <div class="skill-icon">
+                            <i class="${skill.icon}"></i>
+                        </div>
+                        <p>${skill.name}</p>
+                    `;
+                    
+                    skillsGrid.appendChild(skillCard);
+                });
+                
+                skillsContainer.appendChild(categoryElement);
             });
-            
-            skillsContainer.appendChild(categorySection);
-        });
+        }
     }
+    
+    // Initialize skills
+    initSkills();
 });
