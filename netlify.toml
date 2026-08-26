@@ -1,0 +1,52 @@
+# Netlify configuration — https://wanjau.tech/
+
+[build]
+  # No build step. Publish the repo root.
+  # To serve the pre-rendered static build instead (better for SEO — all content
+  # is in the raw HTML rather than rendered by support.js), change this to:
+  #   publish = "export"
+  publish = "."
+  command = ""
+
+# --- Canonical host -----------------------------------------------------
+# One host, one set of ranking signals. www -> apex, 301.
+[[redirects]]
+  from = "https://www.wanjau.tech/*"
+  to = "https://wanjau.tech/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.wanjau.tech/*"
+  to = "https://wanjau.tech/:splat"
+  status = 301
+  force = true
+
+# --- Security & SEO headers ---------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # HSTS only takes effect over a valid certificate. Safe to ship now; it
+    # starts being honoured the moment the wanjau.tech cert is provisioned.
+    # Add "; preload" only once you are certain HTTPS will never be turned off.
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+# Static assets are content-addressed by deploy; cache them hard.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"

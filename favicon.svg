@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EW">
+  <rect width="64" height="64" rx="8" fill="#2c455d"/>
+  <g fill="none" stroke="#94bce3" stroke-width="2.5">
+    <path d="M8 16V8h8M56 16V8h-8M8 48v8h8M56 48v8h-8"/>
+  </g>
+  <text x="32" y="43" text-anchor="middle"
+        font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="30" font-weight="700" letter-spacing="-1.5" fill="#f2f2f3">EW</text>
+</svg>

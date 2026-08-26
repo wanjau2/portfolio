@@ -1,0 +1,9 @@
+# https://wanjau.tech/
+User-agent: *
+Allow: /
+
+# Netlify preview/branch deploys must not be indexed as duplicates
+# (deploy previews are served from *.netlify.app and blocked by Netlify's own
+# x-robots-tag; this is a belt-and-braces note, not a directive)
+
+Sitemap: https://wanjau.tech/sitemap.xml
