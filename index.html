@@ -203,7 +203,7 @@
             <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
             <table class="table" style="width: 100%;">
               <tbody>
-                <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="3">
+                <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="4">
                   <tr>
                     <td style="width: 64px; padding: 14px 0 14px 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--color-accent-700); vertical-align: middle;">{{ c.num }}</td>
                     <td style="padding: 14px 20px 14px 0; vertical-align: middle;">
@@ -305,11 +305,12 @@ class Component extends DCLogic {
     ];
 
     const certifications = this.props.certifications ?? [
-      { num: "01", name: "Certification name", issuer: "Issuing body", year: "Year", href: "" },
-      { num: "02", name: "Certification name", issuer: "Issuing body", year: "Year", href: "" },
-      { num: "03", name: "Certification name", issuer: "Issuing body", year: "Year", href: "" }
+      { num: "01", name: "Applied Data Science Lab", issuer: "WorldQuant University", year: "2024", href: "" },
+      { num: "02", name: "Data Engineering", issuer: "DeepLearning.AI", year: "2025", href: "" },
+      { num: "03", name: "Deep Learning", issuer: "DeepLearning.AI", year: "In progress", href: "" },
+      { num: "04", name: "Data Analyst", issuer: "IBM", year: "2025", href: "" }
     ];
-    const certsNote = "Placeholder rows — send the certificate names, issuers, years and verification links and these fill in.";
+    const certsNote = "Add verification links to each row as they come through.";
 
     const projects = [
       {
